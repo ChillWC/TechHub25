@@ -1,0 +1,30 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using TMPro;
+
+public class Spawning : MonoBehaviour 
+{
+    public Timer Timer;
+    public GameObject NPC;
+    public TextMeshProUGUI text;
+
+    bool StopSpawning = false;
+
+    // Start is called before the first frame update
+    void Start()
+    {
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        if (Timer.Second >= 3 && StopSpawning == false)
+        {
+            GameObject temp = Instantiate(NPC, transform.position, transform.rotation);
+            temp.GetComponent<Order_Number_Generator>().text = text;
+            Debug.Log("Spawned");
+            StopSpawning = true;
+        }
+    }
+}
